@@ -1,16 +1,16 @@
 import React from 'react'
-import { Toggle } from '@duik/it'
+// import { Toggle } from '@duik/it'
 import { Timeline } from 'antd'
 import AvatarGenerator from 'react-avatar-generator'
 import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from 'react-redux'
-import { OptimizelyFeature } from '@optimizely/react-sdk'
+// import { OptimizelyFeature } from '@optimizely/react-sdk'
 import { usePersonForm, setImage } from '../peopleHelpers/personBox'
 import { handleTracking as _handleTracking } from '../peopleAPI'
 import { EditBox } from './EditBox'
 import { TimeUpdate } from './TimeUpdate'
 import { ConfirmDelete } from './ConfirmDelete'
-import { SocialLinks } from './SocialLinks'
+// import { SocialLinks } from './SocialLinks'
 import { PersonCard } from './PersonCard'
 
 const beta = true
@@ -157,8 +157,8 @@ export const PersonModal = ({
               </small>
             </div>
           </div>
-
-          <OptimizelyFeature feature='workboard'>
+        </div>
+        {/* <OptimizelyFeature feature='workboard'>
             {isEnabled =>
               isEnabled ? (
                 <Toggle
@@ -202,6 +202,8 @@ export const PersonModal = ({
           {isEnabled =>
             isEnabled && <SocialLinks contact={state} setState={setState} />}
         </OptimizelyFeature>
+       */}
+
         <Timeline>
           {Object.values(
             state.notes

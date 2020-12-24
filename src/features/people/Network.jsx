@@ -86,7 +86,7 @@ export const InnerNetwork = ({ uid, contactChunks }) => {
           </ContactImporter>
         )}
 
-        <div>
+        {/* <div>
           <div className="sm:hidden">
             <label htmlFor="tabs" className="sr-only">Select a tab</label>
             <select id="tabs" name="tabs" className="block w-full focus:ring-green-500 focus:border-green-500 border-gray-300 rounded-md">
@@ -115,7 +115,7 @@ export const InnerNetwork = ({ uid, contactChunks }) => {
               </nav>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <ActiveContactList contacts={allContacts} uid={uid} />
       </div>

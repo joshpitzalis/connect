@@ -36,7 +36,7 @@ export const TimeUpdate = ({ lastUpdated, setTime, visible, setVisible }) => {
   const wrapperRef = useRef(null)
   useOutsideCloser(wrapperRef, setVisible)
   return (
-    <div >
+    <div>
       {visible ? (
         <div
           ref={wrapperRef}
@@ -60,7 +60,7 @@ export const TimeUpdate = ({ lastUpdated, setTime, visible, setVisible }) => {
           type='button'
           data-testid='timeBox'
           onClick={() => setVisible(true)}
-          className='bn pointer text-sm text-gray-400 underline mb3'
+          className='bn pointer text-sm text-gray-400 underline'
         >
           {lastUpdated &&
             format(new Date(lastUpdated), 'd MMM yyyy')}

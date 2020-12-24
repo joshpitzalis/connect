@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { TimeUpdate } from './TimeUpdate'
-import { useMorph } from 'react-morph'
+// import { useMorph } from 'react-morph'
 
 /**
  * @param  {{
@@ -15,22 +15,28 @@ import { useMorph } from 'react-morph'
  * }}
  */
 export function EditBox ({ setEditBox, dispatch, note }) {
-  const [text, setText] = useState(note ? note.text : '')
-  const morph = useMorph()
+  const [text] = useState(note ? note.text : 'Contacted')
+  // const morph = useMorph()
   const [lastUpdated, setTime] = useState(note ? note.lastUpdated : +new Date())
   const [visible, setVisible] = React.useState(false)
-  const [error, setError] = useState('')
+  // const [error, setError] = useState('')
   return (
-    <div className="mt-1 sm:mt-0 sm:col-span-2 p-3">
-      <div className="flex justify-end">
-        {visible &&
-            <textarea
-              {...morph}
-              id="about"
-              rows="5"
-              className="ma3 mt0 rounded-md p-3 form-textarea block w-full sm:text-sm sm:leading-5"
-              value={text}
-              placeholder='Add notes here...'/> }
+    <div className="mt-1 sm:mt-0 sm:col-span-2">
+      <div className="flex justify-between items-center m-0">
+
+        {!visible &&
+           <button
+             type="button"
+             className="inline-flex items-center px-8 py-6 m-0 border border-transparent text-sm leading-5 font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-50 focus:outline-none focus:border-green-300 focus:shadow-outline-green active:bg-green-200 transition ease-in-out duration-150"
+             onClick={() => {
+               dispatch({
+                 type: 'NEW_NOTE_SUBMITTED',
+                 payload: { text, id: note ? note.id : +new Date(), lastUpdated }
+               })
+               setEditBox(false)
+             }}>
+           Mark Contacted
+           </button> }
         <TimeUpdate
           lastUpdated={lastUpdated}
           setTime={setTime}
@@ -40,7 +46,7 @@ export function EditBox ({ setEditBox, dispatch, note }) {
         />
       </div>
 
-      {!visible &&
+      {/* {!visible &&
           <div {...morph} className="max-w-lg flex justify-end rounded-md shadow-sm">
             <textarea
               autoFocus
@@ -79,7 +85,7 @@ export function EditBox ({ setEditBox, dispatch, note }) {
               setEditBox(false)
             }}>
           Save Note
-          </button></div></div>
+          </button></div></div> */}
     </div>
   )
 }
