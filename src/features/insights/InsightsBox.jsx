@@ -1,7 +1,7 @@
 import React from 'react'
 // import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 import { useSelector } from 'react-redux'
-import { Tooltip } from 'antd'
+// import { Tooltip } from 'antd'
 
 // function percentage (value, total) {
 //   return Math.round((value / total) * 100)
@@ -45,10 +45,11 @@ export function InsightsBox () {
   const people = useSelector(
     store =>
       store.contacts &&
-      store.contacts.filter(
-        item =>
-          !!item.lastContacted && (!item.bucket || item.bucket === 'active')
-      ).length
+      store.contacts.length
+      // store.contacts.filter(
+      //   item =>
+      //     !!item.lastContacted && (!item.bucket || item.bucket === 'active')
+      // ).length
   )
 
   const inTouchWith = useSelector(store =>
@@ -67,8 +68,8 @@ export function InsightsBox () {
 }
 
 export const Counters = ({ people, inTouchWith, thisWeek }) => (
-  <div className=''>
-    {!!thisWeek && (
+  <div className='flex justify-end'>
+    {/* {!!thisWeek && (
       <dl className='dib mr5 w4 pt5'>
         <div>
           <Tooltip
@@ -88,64 +89,22 @@ export const Counters = ({ people, inTouchWith, thisWeek }) => (
             </dd>
           </Tooltip>
         </div>
-        {/* <SparkLine data={[0, thisWeek]} /> */}
+        {/* <SparkLine data={[0, thisWeek]} />
       </dl>
-    )}
+    )} */}
     {!!inTouchWith && !!people && (
-      <dl className='dib mr5 w4 pt5'>
-        <div>
-          <Tooltip
-            title={
-              <p className='white'>
-                If you have added a note to a contact or completed a reminder
-                connected to a contact in the last 6 months then it will count
-                as being in touch with that contact. Gradually work toward
-                staying in touch with more than 80% of your network at all
-                times.
-              </p>
-            }
-          >
-            <dd className='f6 f5-ns b ml0'>Contacted</dd>
-            <dd className='f3 f2-ns b ml0'>
-              <span data-testid='inTouchWith'>{inTouchWith}</span>
-              {/* <small className='text3 f6 pl3'>
+
+      <div>
+
+        <dd className='f3 f2-ns b ml0 silver'>
+          <span data-testid='inTouchWith'>{inTouchWith}</span>
+          {/* <small className='text3 f6 pl3'>
                 {percentage(inTouchWith, people)}%
               </small> */}
-              <small className='text3 f6'>/ 56</small>
-            </dd>
-          </Tooltip>
-        </div>
-        {/* <SparkLine data={[13, 3, 5, 7, 3, 3, 5, 7, 3]} /> */}
-        {/* <SparkLine data={[0, inTouchWith]} /> */}
-      </dl>
-    )}
+          <small className='text3 f6'>/  {people}</small>
+        </dd>
 
-    {!!people && (
-      <dl className='dib mr5 w4 pt5'>
-        <div>
-          <Tooltip
-            title={
-              <p className='white'>
-                We recommend building a personal network of 150 people. Any more
-                than this and it becomes too hard to maintain a genuine
-                relationship with each person. For more on the evidence behind
-                this{' '}
-                <a href='https://www.youtube.com/watch?v=EidKI1Bdons&feature=youtu.be&t=354'>
-                  watch this youTube video
-                </a>
-                . There is also primary research in the video description.
-              </p>
-            }
-          >
-            <dd className='f6 f5-ns b ml0'>Cleaned</dd>
-            <dd className='f3 f2-ns b ml0'>
-              {people}
-              <small className='text3 f6'>/ 56</small>
-            </dd>
-          </Tooltip>
-        </div>
-        {/* <SparkLine data={[0, people]} /> */}
-      </dl>
+      </div>
     )}
 
   </div>

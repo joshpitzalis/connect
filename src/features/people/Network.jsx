@@ -6,7 +6,7 @@ import { OptimizelyFeature } from '@optimizely/react-sdk'
 import { Person } from './components/Person'
 import { PersonModal } from './components/PersonBox'
 import ErrorBoundary from '../../utils/ErrorBoundary'
-// import { InsightsBox } from '../insights/InsightsBox'
+import { InsightsBox } from '../insights/InsightsBox'
 // import { HelpfulTaskList } from './components/UniversalTaskList'
 import { ContactImporter } from '../googleImport'
 
@@ -45,8 +45,6 @@ export const InnerNetwork = ({ uid, contactChunks }) => {
     <ErrorBoundary fallback="Oh no! This bit is broken 🤕">
       <div data-testid="outreachPage">
 
-        {/* <InsightsBox /> */}
-
         {/* <OptimizelyFeature feature="insights">
           {insights => insights &&
          <InsightsBox />}
@@ -69,7 +67,6 @@ export const InnerNetwork = ({ uid, contactChunks }) => {
               setSelectedUser('')
             }}
             newPerson
-
             setVisibility={() =>
               setVisibility(false)}
           />
@@ -116,7 +113,7 @@ export const InnerNetwork = ({ uid, contactChunks }) => {
             </div>
           </div>
         </div> */}
-
+        <InsightsBox />
         <ActiveContactList contacts={allContacts} uid={uid} />
       </div>
     </ErrorBoundary>
